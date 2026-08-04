@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: internship-platform
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:internship}?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:123456}
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:data.sql
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: ${SERVER_SERVLET_CONTEXT_PATH:/api}
+
+jwt:
+  secret: ${JWT_SECRET:internship-platform-jwt-secret-key-must-be-at-least-sixty-four-bytes-long-for-hs512!!}
+  expiration: ${JWT_EXPIRATION:86400000}
+
+deepseek:
+  api-key: ${DEEPSEEK_API_KEY:}
+  api-url: ${DEEPSEEK_API_URL:https://api.deepseek.com/v1}
+  model: ${DEEPSEEK_MODEL:deepseek-chat}
+
+webase:
+  url: ${WEBASE_URL:}
+  api-path: ${WEBASE_API_PATH:/WeBASE-Front}
+  certificate-contract-address: ${CERTIFICATE_CONTRACT_ADDRESS:}
+  record-contract-address: ${RECORD_CONTRACT_ADDRESS:}
+  group-id: ${WEBASE_GROUP_ID:group0}
+  school-account: ${SCHOOL_ACCOUNT:}
+  enterprise-account: ${ENTERPRISE_ACCOUNT:}
+  school-private-key: ${SCHOOL_PRIVATE_KEY:}
+  enterprise-private-key: ${ENTERPRISE_PRIVATE_KEY:}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="实习存证平台">
+  <defs>
+    <linearGradient id="bg" x1="10" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f7fbf2"/>
+      <stop offset="0.42" stop-color="#6ea98f"/>
+      <stop offset="1" stop-color="#14231b"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="18" y1="12" x2="45" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dfeee6"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#10251b" flood-opacity="0.34"/>
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#bg)"/>
+  <path d="M13 48c7.4-7.8 17.2-10.6 29.5-8.5 3.3.6 6.2.4 8.5-.5" fill="none" stroke="#f7d98f" stroke-width="2.6" stroke-linecap="round" opacity="0.9"/>
+  <g filter="url(#shadow)">
+    <path d="M22 12h17l9 9v27a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4z" fill="url(#paper)"/>
+    <path d="M39 12v9h9" fill="none" stroke="#7ea891" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M25 29h16M25 36h13" stroke="#21362a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="32" cy="45" r="4.5" fill="#f2b94b"/>
+    <path d="M28 49l-2 6 6-3 6 3-2-6" fill="#f2b94b"/>
+  </g>
+  <circle cx="19" cy="20" r="2.5" fill="#f7d98f"/>
+  <circle cx="50" cy="33" r="2.5" fill="#f7d98f"/>
+</svg>

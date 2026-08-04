@@ -1,0 +1,74 @@
+# Backend
+backend/target/
+backend/.m2/
+backend/.classpath
+backend/.project
+backend/.settings/
+backend/*.log
+backend/.idea/
+backend/*.iml
+backend/out/
+
+# Frontend
+frontend/node_modules/
+frontend/.vite/
+frontend/dist/
+frontend/.env.local
+frontend/.env.*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Local caches and test output
+.m2/
+.playwright-cli/
+test-results/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Misc
+.cache/
+.parcel-cache/
+dist/
+build/
+*.zip 
+*.pptx 
+*.docx 

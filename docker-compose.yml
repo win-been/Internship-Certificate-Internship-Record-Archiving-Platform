@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # MySQL数据库
+  mysql:
+    image: mysql:8.0
+    container_name: internship-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: internship_db
+      MYSQL_CHARSET: utf8mb4
+      MYSQL_COLLATION: utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - internship-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # 后端应用
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: internship-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/internship_db?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY}
+      WEBASE_URL: ${WEBASE_URL}
+      WEBASE_CONTRACT_ADDRESS: ${WEBASE_CONTRACT_ADDRESS}
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - internship-network
+    volumes:
+      - ./backend/logs:/app/logs
+
+  # 前端应用
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: internship-frontend
+    environment:
+      VITE_API_BASE_URL: http://localhost:8080/api
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - internship-network
+
+volumes:
+  mysql-data:
+
+networks:
+  internship-network:
+    driver: bridge
